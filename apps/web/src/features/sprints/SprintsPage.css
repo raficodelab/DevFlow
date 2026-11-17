@@ -1,0 +1,167 @@
+.sprints-page {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.sprints-heading,
+.sprint-card-top,
+.sprint-progress-heading,
+.sprint-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.sprints-heading {
+  margin-bottom: 28px;
+}
+
+.sprints-heading h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.sprints-heading p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.sprints-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.sprint-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 24px;
+  min-width: 0;
+}
+
+.sprint-icon {
+  display: inline-flex;
+  padding: 12px;
+  background: #eff6ff;
+  color: #2563eb;
+  border-radius: 10px;
+}
+
+.sprint-project {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.sprint-card h2 {
+  font-size: 19px;
+  margin: 22px 0 10px;
+}
+
+.sprint-card > p {
+  color: #64748b;
+  font-size: 14px;
+  min-height: 48px;
+  line-height: 1.6;
+}
+
+.sprint-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #64748b;
+  font-size: 13px;
+  margin: 18px 0;
+}
+
+.sprint-progress-heading {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.sprint-progress-track {
+  height: 9px;
+  background: #e2e8f0;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 9px;
+}
+
+.sprint-progress-fill {
+  height: 100%;
+  background: #2563eb;
+  border-radius: 20px;
+}
+
+.sprint-card > small {
+  color: #64748b;
+}
+
+.sprint-actions {
+  justify-content: flex-start;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 18px;
+  margin-top: 20px;
+}
+
+.sprint-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #334155;
+}
+
+.sprint-actions .delete-btn {
+  color: #dc2626;
+}
+
+.sprints-empty {
+  text-align: center;
+  padding: 65px 20px;
+  color: #64748b;
+}
+
+.sprints-empty h2 {
+  color: #0f172a;
+  margin: 12px 0;
+}
+
+.sprint-task-picker {
+  max-height: 160px;
+  overflow-y: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.sprint-task-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+}
+
+.project-modal .sprint-task-option input {
+  width: auto;
+}
+
+@media (max-width: 1200px) {
+  .sprints-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .sprints-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sprints-heading {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

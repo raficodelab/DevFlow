@@ -1,0 +1,257 @@
+.projects-page {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.projects-heading,
+.projects-toolbar,
+.project-card-top,
+.project-card-meta,
+.project-card-actions,
+.project-modal-heading,
+.project-form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.projects-heading {
+  margin-bottom: 28px;
+}
+
+.projects-heading h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.projects-heading p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.primary-btn:hover {
+  background: #1d4ed8;
+}
+
+.projects-toolbar {
+  margin-bottom: 24px;
+}
+
+.projects-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+  padding: 0 14px;
+  flex: 1;
+  max-width: 420px;
+  color: #64748b;
+}
+
+.projects-search input {
+  border: none;
+  outline: none;
+  padding: 13px 0;
+  width: 100%;
+  background: transparent;
+}
+
+.projects-toolbar select {
+  padding: 12px 14px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 24px;
+  min-width: 0;
+}
+
+.project-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eff6ff;
+  color: #2563eb;
+  border-radius: 10px;
+}
+
+.project-status {
+  font-size: 12px;
+  background: #f1f5f9;
+  color: #475569;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+
+.project-card h2 {
+  font-size: 18px;
+  margin: 22px 0 10px;
+  overflow-wrap: anywhere;
+}
+
+.project-card > p {
+  color: #64748b;
+  font-size: 14px;
+  min-height: 48px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.project-card-meta {
+  font-size: 12px;
+  color: #64748b;
+  margin: 22px 0;
+}
+
+.project-card-actions {
+  border-top: 1px solid #f1f5f9;
+  padding-top: 18px;
+  justify-content: flex-start;
+}
+
+.project-card-actions button,
+.project-modal-heading button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #334155;
+}
+
+.project-card-actions .delete-btn {
+  color: #dc2626;
+}
+
+.projects-empty {
+  text-align: center;
+  padding: 65px 20px;
+  color: #64748b;
+}
+
+.projects-empty h2 {
+  margin: 14px 0 8px;
+  color: #0f172a;
+}
+
+.project-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.project-modal {
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.project-modal-heading {
+  margin-bottom: 24px;
+}
+
+.project-modal-heading h2 {
+  font-size: 22px;
+}
+
+.project-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project-modal label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.project-modal input,
+.project-modal textarea,
+.project-modal select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline-color: #2563eb;
+  background: white;
+  color: #0f172a;
+}
+
+.project-form-actions {
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.secondary-btn {
+  padding: 12px 18px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  background: white;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-heading,
+  .projects-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .projects-search {
+    max-width: none;
+  }
+
+  .project-modal {
+    padding: 20px;
+  }
+}
