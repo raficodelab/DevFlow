@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { LogIn } from "lucide-react";
@@ -5,7 +6,7 @@ import { useAuth } from "../features/auth/useAuth";
 import "./AuthPage.css";
 
 export default function LoginPage() {
-  const { user, login } = useAuth();
+  const { user, loading, login } = useAuth();
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
@@ -14,27 +15,35 @@ export default function LoginPage() {
   });
 
   const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
-  if (user) return <Navigate to="/dashboard" replace />;
-
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     setError("");
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      setError("Please enter a valid email address.");
+    if (!form.email.trim() || !form.password) {
+      setError("Email and password are required.");
       return;
     }
 
-    if (form.password.length < 6) {
-      setError("Password must be at least 6 characters.");
-      return;
-    }
+    setSubmitting(true);
 
-    // Demo only: no password verification.
-    login({ email: form.email.trim() });
-    navigate("/dashboard", { replace: true });
+    try {
+      await login({
+        email: form.email.trim(),
+        password: form.password,
+      });
+
+      navigate("/dashboard", { replace: true });
+    } catch (err) {
+      setError(err.message || "Login failed. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
+
+  if (loading) return <main className="auth-page">Loading...</main>;
+  if (user) return <Navigate to="/dashboard" replace />;
 
   return (
     <main className="auth-page">
@@ -43,10 +52,6 @@ export default function LoginPage() {
 
         <h1>Welcome back</h1>
         <p>Sign in to manage your projects and tasks.</p>
-
-        <div className="auth-demo-notice">
-          Demo mode — any valid email and 6+ character password works.
-        </div>
 
         <form onSubmit={handleSubmit}>
           <label htmlFor="login-email">Email Address</label>
@@ -67,20 +72,27 @@ export default function LoginPage() {
             id="login-password"
             type="password"
             required
-            minLength={6}
             autoComplete="current-password"
-            placeholder="Enter demo password"
+            placeholder="Enter your password"
             value={form.password}
             onChange={(event) =>
               setForm({ ...form, password: event.target.value })
             }
           />
 
-          {error && <p className="auth-error" role="alert">{error}</p>}
+          {error && (
+            <p className="auth-error" role="alert">
+              {error}
+            </p>
+          )}
 
-          <button type="submit" className="auth-submit">
+          <button
+            type="submit"
+            className="auth-submit"
+            disabled={submitting}
+          >
             <LogIn size={18} />
-            Sign In
+            {submitting ? "Signing in..." : "Sign In"}
           </button>
         </form>
 
